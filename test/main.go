@@ -53,11 +53,12 @@ func main() {
 
 	InitLocalMQDB()
 
-	Consumer()
+	go Consumer()
 
-	Producer()
+	go Producer()
 
-	time.Sleep(time.Hour)
+	c := make(chan int, 0)
+	<-c
 }
 
 func InitLocalMQDB() {
